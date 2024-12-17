@@ -1,0 +1,11 @@
+.ck-toolbar {
+    background-color: red;
+}
+
+.ck-content {
+    background-color: #0C162C !important;
+}
+
+.ck-balloon-panel {
+    opacity: 0;
+}
