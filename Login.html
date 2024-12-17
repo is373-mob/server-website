@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BeyondEarth - Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="overlay"></div>
+<header>
+  <a href="homepage.html" class="home-button">BeyondEarth</a>
+  <div class="header-buttons">
+    <button class="active" id="login-toggle">Login</button>
+    <button id="signup-toggle">Sign Up</button>
+  </div>
+</header>
+<div class="auth-container">
+  <h2 id="form-title">Login</h2>
+  <form id="auth-form">
+    <div class="input-field">
+      <label for="username">Username</label>
+      <input type="text" id="username" placeholder="Enter username">
+    </div>
+    <div class="input-field" id="password-field">
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter password">
+    </div>
+    <button type="submit" class="submit-btn">Login</button>
+  </form>
+</div>
+
+<script>
+  const loginToggle = document.getElementById('login-toggle');
+  const signupToggle = document.getElementById('signup-toggle');
+  const formTitle = document.getElementById('form-title');
+  const authForm = document.getElementById('auth-form');
+  const passwordField = document.getElementById('password-field');
+
+  // Toggle between Login and Sign Up
+  loginToggle.addEventListener('click', () => {
+    formTitle.textContent = 'Login';
+    loginToggle.classList.add('active');
+    signupToggle.classList.remove('active');
+    passwordField.style.display = 'block';
+  });
+
+  signupToggle.addEventListener('click', () => {
+    formTitle.textContent = 'Sign Up';
+    signupToggle.classList.add('active');
+    loginToggle.classList.remove('active');
+    passwordField.style.display = 'block';
+  });
+</script>
+</body>
+</html>
+
