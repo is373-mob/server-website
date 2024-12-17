@@ -1,0 +1,28 @@
+main {
+    padding: 24px;
+    border-radius: 12px;
+}
+
+#block-is373mob-start-branding a {
+    font-family: "Unlock", serif;
+    font-size: 2em;
+    text-decoration: none;
+    color: #fff;
+}
+
+#block-is373mob-start-tabs ul {
+    gap: 1rem;
+}
+
+#block-is373mob-start-tabs a {
+    text-decoration: none;
+    padding: 8px 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    border: 1px solid var(--accent-color);
+}
+
+#block-is373mob-start-tabs .is-active {
+    background-color: var(--accent-color);
+}
+
