@@ -1,0 +1,50 @@
+services:
+  drupal:
+    image: drupal:latest
+    volumes:
+      - "./modules:/var/www/html/modules"
+      - "./profiles:/var/www/html/profiles"
+      - "./sites:/var/www/html/sites"
+      - "./themes:/var/www/html/themes"
+    environment:
+      - DB_DRIVER=pgsql
+      - DB_HOST=db
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - DB_PORT=5432
+    labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.drupal.rule=PathPrefix(`/`)"
+        - "traefik.http.routers.drupal.entrypoints=web"
+        - "traefik.http.services.drupal.loadbalancer.server.port=80"
+    command: /bin/bash -c "\
+      chown -R www-data:www-data /var/www/html/modules /var/www/html/profiles /var/www/html/sites /var/www/html/themes && \
+      chmod -R 755 /var/www/html/modules /var/www/html/profiles /var/www/html/sites /var/www/html/themes && \
+      composer require drush/drush && \
+      composer require 'drupal/zuvi:^11.0' && \
+      apache2-foreground"
+    restart: unless-stopped
+    depends_on:
+      - db
+    networks:
+      - drupal_network
+
+  db:
+    image: postgres:latest
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    restart: unless-stopped
+    networks:
+      - drupal_network
+
+volumes:
+  db_data:
+
+networks:
+  drupal_network:
+    driver: bridge

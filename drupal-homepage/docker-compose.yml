@@ -1,0 +1,15 @@
+services:
+  web:
+    image: nginx:alpine
+    container_name: drupal-homepage
+    restart: unless-stopped
+    volumes:
+      - ./html:/usr/share/nginx/html
+      - ./css:/usr/share/nginx/css
+      - ../drupal-theme:/usr/share/nginx/css/drupal-theme
+      - ./conf:/etc/nginx/conf.d
+    labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.drupal-homepage.rule=HostRegexp(`^home\\..*`)"
+        - "traefik.http.routers.drupal-homepage.entrypoints=web"
+        - "traefik.http.services.drupal-homepage.loadbalancer.server.port=80"

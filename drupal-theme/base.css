@@ -1,0 +1,169 @@
+/* 
+* Variables
+*/
+:root {
+    --primary-background-color-rgb: 6,11,22;
+    --primary-background-color: #060B16;
+    --primary-foreground-color: #FFF;
+    --secondary-background-color: #121722;
+    --secondary-foreground-color: #FFF;
+    --accent-color: #6F7C90;
+    --accent-color-text: #FFF;
+}
+
+
+/* 
+* Typography
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Unlock&display=swap');
+
+html {font-size: 16px;}
+
+body {
+    font-family: "Roboto", sans-serif;
+    font-weight: false;
+    line-height: 1.65;
+}
+
+p {
+    font-size: 1em;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Roboto Serif", serif;
+  font-weight: true;
+  line-height: 1.15;
+}
+
+h4,
+h5 {
+  font-family: "Roboto", sans-serif;
+  font-weight: true;
+  line-height: 1.15;
+}
+
+h1,
+.text-size-h1 {
+  font-weight: 700;
+  margin-top: 0;
+  font-size: 3.05em;
+}
+
+h2,
+.text-size-h2 { font-size: 2.44em; }
+
+h3,
+.text-size-h3 { font-size: 1.95em; }
+
+h4,
+.text-size-h4 { font-size: 1.56em; }
+
+h5,
+.text-size-h5 { font-size: 1.25em; }
+
+.text-caption { font-size: 0.8em; }
+
+small,
+.text-small {
+  font-size: 0.64em;
+}
+
+/* 
+* BASE
+*/
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    border: none;
+}
+
+html {
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+    height: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+:focus:not(:focus-visible) {
+    outline: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+/* * Takes off padding from lists outside of articles */
+menu:not(article menu),
+ol:not(article ol),
+ul:not(article ul) {
+    list-style: none;
+}
+
+menu,
+ol,
+ul {
+    padding-left: 0;
+}
+
+article ol,
+article ul {
+    list-style-position: inside;
+}
+
+/* * Links */
+a {
+    text-decoration-thickness: 8;
+    text-underline-offset: 0.2rem;
+}
+
+/* * Enforces cursor */
+label,
+button,
+select,
+summary,
+[type=radio],
+[type=submit],
+[type=checkbox] {
+    cursor: pointer;
+}
+
+/* 
+* Home button
+*/
+
+.home-button {
+    font-family: "Unlock", serif;
+    font-size: 2em;
+    text-decoration: none;
+    color: #fff;
+}
+
+/* 
+* Buttons
+*/
+
+.primary-button,
+.secondary-button {
+    all: unset;
+    padding: 12px 32px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+}
+.primary-button {
+    background-color: var(--accent-color);
+}
+.secondary-button {
+    border: 1px solid var(--accent-color);
+}
